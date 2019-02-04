@@ -1,0 +1,27 @@
+<%= form_with(model: test_suite_result, local: true) do |form| %>
+  <% if test_suite_result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(test_suite_result.errors.count, "error") %> prohibited this test_suite_result from being saved:</h2>
+
+      <ul>
+      <% test_suite_result.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :data %>
+    <%= form.text_field :data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :test_suite_id %>
+    <%= form.text_field :test_suite_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
