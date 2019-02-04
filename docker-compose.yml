@@ -13,7 +13,7 @@ services:
     build:
       context: .
       args:
-        - DISABLE_COMPILE=true
+        - LOCAL_BUILD=true
     volumes:
       - .:/app:cached
       - tmp:/app/tmp

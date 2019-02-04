@@ -1,6 +1,6 @@
 FROM ruby:2.6.1-alpine
 
-ARG DISABLE_COMPILE
+ARG LOCAL_BUILD
 
 ENV BUNDLE_JOBS=4 RAILS_LOG_TO_STDOUT=true RAILS_SERVE_STATIC_FILES=true BUNDLE_PATH=/vendor/bundle LANG=C.UTF-8 LC_ALL=C.UTF-8
 
@@ -17,20 +17,22 @@ WORKDIR /app
 
 USER app
 
-# COPY --chown=app Gemfile Gemfile.lock ./
+COPY --chown=app Gemfile Gemfile.lock ./
 
-# RUN bundle install
+RUN if [ -z "$LOCAL_BUILD" ]; then \
+  bundle install \
+  ;fi
 
-# COPY --chown=app package.json yarn.lock ./
+COPY --chown=app package.json yarn.lock ./
 
-# RUN if [ -z "$DISABLE_COMPILE" ]; then \
-#   yarn install \
-#   ;fi
+RUN if [ -z "$LOCAL_BUILD" ]; then \
+  yarn install \
+  ;fi
 
-# COPY --chown=app . ./
+COPY --chown=app . ./
 
-# RUN if [ -z "$DISABLE_COMPILE" ]; then \
-#   yarn run apollo:codegen && SECRET_KEY_BASE=`bin/rails secret` RAILS_ENV=production bin/rails assets:precompile \
-#   ;fi
+RUN if [ -z "$LOCAL_BUILD" ]; then \
+  SECRET_KEY_BASE=`bin/rails secret` RAILS_ENV=production bin/rails assets:precompile \
+  ;fi
 
-# CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
