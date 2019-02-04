@@ -1,4 +1,7 @@
 class TestSuiteResultsController < ApplicationController
+  # FIXME
+  skip_before_action :verify_authenticity_token
+
   before_action :set_test_suite_result, only: [:show, :edit, :update, :destroy]
 
   # GET /test_suite_results
@@ -24,10 +27,12 @@ class TestSuiteResultsController < ApplicationController
   # POST /test_suite_results
   # POST /test_suite_results.json
   def create
-    @test_suite_result = TestSuiteResult.new(test_suite_result_params)
+    @test_suite_result = TestSuiteResult.new(test_suite_result_params.merge(data: test_suite_result_params[:data].read))
 
     respond_to do |format|
       if @test_suite_result.save
+        ImportTestSuiteResultJob.perform_now(@test_suite_result)
+
         format.html { redirect_to @test_suite_result, notice: 'Test suite result was successfully created.' }
         format.json { render :show, status: :created, location: @test_suite_result }
       else
