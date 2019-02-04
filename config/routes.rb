@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: redirect('/test_suites')
+
   resources :test_example_results
   resources :test_suite_results
   resources :test_examples
