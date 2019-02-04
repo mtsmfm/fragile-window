@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_04_175213) do
+ActiveRecord::Schema.define(version: 2019_02_04_201802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_175213) do
     t.boolean "processed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "original_url", null: false
     t.index ["processed"], name: "index_test_suite_results_on_processed"
     t.index ["test_suite_id"], name: "index_test_suite_results_on_test_suite_id"
   end

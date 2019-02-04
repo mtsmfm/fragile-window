@@ -81,6 +81,6 @@ class TestSuiteResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_suite_result_params
-      params.require(:test_suite_result).permit(:data, :test_suite_id)
+      params.require(:test_suite_result).permit(:data, :test_suite_id, :original_url)
     end
 end
