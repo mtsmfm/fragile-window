@@ -5,5 +5,31 @@
   <%= @test_suite.name %>
 </p>
 
+<h1>Test Examples</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Classname</th>
+      <th>File</th>
+      <th>Pending</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test_suite.test_examples.each do |test_example| %>
+      <tr>
+        <td><%= test_example.name %></td>
+        <td><%= test_example.classname %></td>
+        <td><%= test_example.file %></td>
+        <td><%= test_example.pending %></td>
+        <td><%= link_to 'Edit', edit_test_example_path(test_example) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_test_suite_path(@test_suite) %> |
 <%= link_to 'Back', test_suites_path %>

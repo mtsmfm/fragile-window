@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Original URL</th>
       <th>OK?</th>
       <th>Test suite</th>
       <th colspan="3"></th>
@@ -14,8 +15,9 @@
   <tbody>
     <% @test_suite_results.each do |test_suite_result| %>
       <tr>
+        <td><%= link_to test_suite_result.original_url, test_suite_result.original_url, target: :_blank %></td>
         <td><%= test_suite_result.ok? %></td>
-        <td><%= test_suite_result.test_suite_id %></td>
+        <td><%= link_to test_suite_result.test_suite_id, test_suite_path(test_suite_result.test_suite_id) %></td>
         <td><%= link_to 'Show', test_suite_result %></td>
         <td><%= link_to 'Edit', edit_test_suite_result_path(test_suite_result) %></td>
         <td><%= link_to 'Destroy', test_suite_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
