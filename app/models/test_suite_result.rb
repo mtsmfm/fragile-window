@@ -1,6 +1,6 @@
 class TestSuiteResult < ApplicationRecord
   belongs_to :test_suite
-  has_many :test_example_results
+  has_many :test_example_results, dependent: :destroy
 
   def ok?
     failed_count == 0
