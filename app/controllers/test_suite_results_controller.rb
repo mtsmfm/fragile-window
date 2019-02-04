@@ -12,7 +12,14 @@ class TestSuiteResultsController < ApplicationController
 
   # GET /test_suite_results/1
   # GET /test_suite_results/1.json
+
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json {
+        render json: @test_suite_result.ok?
+      }
+    end
   end
 
   # GET /test_suite_results/new
