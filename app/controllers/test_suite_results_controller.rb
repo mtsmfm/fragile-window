@@ -38,7 +38,7 @@ class TestSuiteResultsController < ApplicationController
 
     respond_to do |format|
       if @test_suite_result.save
-        ImportTestSuiteResultJob.perform_now(@test_suite_result)
+        ImportTestSuiteResultJob.perform_later(@test_suite_result)
 
         format.html { redirect_to @test_suite_result, notice: 'Test suite result was successfully created.' }
         format.json { render :show, status: :created, location: @test_suite_result }
