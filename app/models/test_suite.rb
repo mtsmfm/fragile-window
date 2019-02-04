@@ -1,0 +1,2 @@
+class TestSuite < ApplicationRecord
+end

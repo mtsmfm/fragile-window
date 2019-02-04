@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Test Suites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test_suites.each do |test_suite| %>
+      <tr>
+        <td><%= test_suite.name %></td>
+        <td><%= link_to 'Show', test_suite %></td>
+        <td><%= link_to 'Edit', edit_test_suite_path(test_suite) %></td>
+        <td><%= link_to 'Destroy', test_suite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Test Suite', new_test_suite_path %>
