@@ -16,9 +16,7 @@ class TestSuiteResultsController < ApplicationController
   def show
     respond_to do |format|
       format.html { render :show }
-      format.json {
-        render json: @test_suite_result.ok?
-      }
+      format.json { render json: @test_suite_result.ok? }
     end
   end
 
@@ -41,7 +39,7 @@ class TestSuiteResultsController < ApplicationController
         ImportTestSuiteResultJob.perform_later(@test_suite_result)
 
         format.html { redirect_to @test_suite_result, notice: 'Test suite result was successfully created.' }
-        format.json { render :show, status: :created, location: @test_suite_result }
+        format.json { render json: @test_suite_result.ok? }
       else
         format.html { render :new }
         format.json { render json: @test_suite_result.errors, status: :unprocessable_entity }
