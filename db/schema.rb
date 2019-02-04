@@ -41,8 +41,10 @@ ActiveRecord::Schema.define(version: 2019_02_04_175213) do
   create_table "test_suite_results", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.xml "data", null: false
     t.uuid "test_suite_id", null: false
+    t.boolean "processed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["processed"], name: "index_test_suite_results_on_processed"
     t.index ["test_suite_id"], name: "index_test_suite_results_on_test_suite_id"
   end
 
