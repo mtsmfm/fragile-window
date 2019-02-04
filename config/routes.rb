@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :test_example_results
   resources :test_suite_results
   resources :test_examples
   resources :test_suites

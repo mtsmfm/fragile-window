@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Test Example Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Result</th>
+      <th>Run time</th>
+      <th>Test example</th>
+      <th>Test suite result</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test_example_results.each do |test_example_result| %>
+      <tr>
+        <td><%= test_example_result.result %></td>
+        <td><%= test_example_result.run_time %></td>
+        <td><%= test_example_result.test_example_id %></td>
+        <td><%= test_example_result.test_suite_result_id %></td>
+        <td><%= link_to 'Show', test_example_result %></td>
+        <td><%= link_to 'Edit', edit_test_example_result_path(test_example_result) %></td>
+        <td><%= link_to 'Destroy', test_example_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Test Example Result', new_test_example_result_path %>

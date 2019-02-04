@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @test_example_result.result %>
+</p>
+
+<p>
+  <strong>Run time:</strong>
+  <%= @test_example_result.run_time %>
+</p>
+
+<p>
+  <strong>Test example:</strong>
+  <%= @test_example_result.test_example_id %>
+</p>
+
+<p>
+  <strong>Test suite result:</strong>
+  <%= @test_example_result.test_suite_result_id %>
+</p>
+
+<%= link_to 'Edit', edit_test_example_result_path(@test_example_result) %> |
+<%= link_to 'Back', test_example_results_path %>
