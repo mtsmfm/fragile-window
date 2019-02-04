@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Test Examples</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Classname</th>
+      <th>File</th>
+      <th>Pending</th>
+      <th>Test suite</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @test_examples.each do |test_example| %>
+      <tr>
+        <td><%= test_example.name %></td>
+        <td><%= test_example.classname %></td>
+        <td><%= test_example.file %></td>
+        <td><%= test_example.pending %></td>
+        <td><%= test_example.test_suite_id %></td>
+        <td><%= link_to 'Show', test_example %></td>
+        <td><%= link_to 'Edit', edit_test_example_path(test_example) %></td>
+        <td><%= link_to 'Destroy', test_example, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Test Example', new_test_example_path %>

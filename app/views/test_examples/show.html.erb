@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @test_example.name %>
+</p>
+
+<p>
+  <strong>Classname:</strong>
+  <%= @test_example.classname %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @test_example.file %>
+</p>
+
+<p>
+  <strong>Pending:</strong>
+  <%= @test_example.pending %>
+</p>
+
+<p>
+  <strong>Test suite:</strong>
+  <%= @test_example.test_suite_id %>
+</p>
+
+<%= link_to 'Edit', edit_test_example_path(@test_example) %> |
+<%= link_to 'Back', test_examples_path %>
