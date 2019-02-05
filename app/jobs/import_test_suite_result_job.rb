@@ -17,9 +17,9 @@ class ImportTestSuiteResultJob < ApplicationJob
           test_suite_result_id: test_suite_result.id,
           run_time: testcase['time'].to_r,
           result:
-            if testcase.search('skipped').empty?
+            if !testcase.search('skipped').empty?
               'skipped'
-            elsif testcase.search('failure').empty?
+            elsif !testcase.search('failure').empty?
               'failure'
             else
               'success'
